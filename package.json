@@ -1,5 +1,5 @@
 {
-  "name": "outside",
+  "name": "wdd-330-sleepoutside",
   "version": "2.0.0",
   "description": "Boilerplate for WDD 330 SleepOutside project",
   "main": "main.js",
@@ -12,6 +12,15 @@
     "test": "jest"
   },
   "author": "Shane Thompson",
+  "contributors": [
+    "Tara Bergener",
+    "Ramos Anderson",
+    "Colby MacArthur",
+    "Ryan Worsham",
+    "Vern Wolfley"
+  ],
+  "repository": "https://github.com/vwolfley/wdd-330-sleepoutside",
+  "private": true,
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.56.0",
@@ -32,5 +41,6 @@
     "last 3 opera versions",
     "last 3 ios_saf versions",
     "last 3 safari versions"
-  ]
+  ],
+  
 }
