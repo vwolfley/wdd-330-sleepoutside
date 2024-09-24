@@ -5,7 +5,7 @@ import ProductList from "./ProductList.mjs"
 const productData = new ProductData("tents");
 
 // Define the list element
-const listElement = document.querySelector(".products-list");
+const listElement = document.querySelector(".product-list");
 
 // Create an instance of ProductList
 const productListing = new ProductList("tents", productData, listElement);
