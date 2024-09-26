@@ -24,3 +24,14 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9532fc66-09b3-48e4-af05-f8ff026717ee/deploy-status)](https://app.netlify.com/sites/sleepoutside-wdd330-team06/deploys)
 
 [Sleep Outside](https://sleepoutside-wdd330-team06.netlify.app/)
+
+
+## WDD 330 Team 06
+
+### Team Members
+
+- Tara Bergener
+- Colby MacArthur
+- Moroni Ramos
+- Vern Wolfley
+- Ryan Worsham

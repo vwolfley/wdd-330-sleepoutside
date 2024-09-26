@@ -1,10 +1,23 @@
 import { getLocalStorage } from "./utils.mjs";
 
-
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || [];
+
+  // If there are no items, we can stop here or show a message
+  if (cartItems.length === 0) {
+    document.querySelector(".product-list").innerHTML =
+      "<p>Your cart is empty.</p>";
+    cartSubtotal(cartItems);
+    return;
+  }
+  // If there are items, we can render them
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  // Set the total price of the cart
+  cartSubtotal(cartItems);
+
+  // console.log(cartItems);
 }
 
 function cartItemTemplate(item) {
@@ -24,6 +37,29 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function cartSubtotal(items) {
+  const cartCard = document.querySelector(".cart-card__subtotal");
+  console.log(items);
+  if (items.length <= 0) {
+    cartCard.classList.add("hide"); // Hide the cart subtotal
+  } else {
+    cartCard.classList.remove("hide"); // Show the cart subtotal
+
+    const subtotal = items.reduce((acc, item) => acc + item.FinalPrice, 0);
+    // console.log({ items, subtotal });
+    const cartCount = items.length;
+    // cart count
+    if (cartCount > 1) {
+      document.querySelector(".cart-count").textContent = `${cartCount} items`;
+    } else {
+      document.querySelector(".cart-count").textContent = `${cartCount} item`;
+    }
+
+    // cart subtotal
+    document.querySelector(".cart-subtotal").textContent = ` $${subtotal}`;
+  }
 }
 
 renderCartContents();
