@@ -8,18 +8,16 @@ export default class ProductDetails {
 
   async init() {
     const product = await this.dataSource.findProductById(this.productId);
-    // console.log(product);
+    this.product = product;
     this.renderProductDetails(product);
 
     document
       .getElementById("addToCart")
-      .addEventListener("click", this.addToCart(product));
+      .addEventListener("click", () => this.addToCart(product));
   }
 
-  addToCart(product) {
-    const productList = getLocalStorage("so-cart") || [];
-    productList.push(product);
-    setLocalStorage("so-cart", productList);
+  async addToCart(product) {
+    setLocalStorage("so-cart", product);
   }
 
   renderProductDetails(product) {
