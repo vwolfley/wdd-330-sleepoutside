@@ -1,6 +1,7 @@
 [
   {
     "Id": "880RR",
+    "Available": true,
     "NameWithoutBrand": "Ajax Tent - 3-Person, 3-Season",
     "Name": "Marmot Ajax Tent - 3-Person, 3-Season",
     "Image": "../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg",
@@ -24,6 +25,7 @@
   },
   {
     "Id": "985RF",
+    "Available": true,
     "NameWithoutBrand": "Talus Tent - 4-Person, 3-Season",
     "Name": "The North Face Talus Tent - 4-Person, 3-Season",
     "Image": "../images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg",
@@ -46,6 +48,7 @@
   },
   {
     "Id": "989CG",
+    "Available": false,
     "NameWithoutBrand": "Talus Tent - 3-Person, 3-Season",
     "Name": "The North Face Talus Tent - 3-Person, 3-Season",
     "Image": "../images/tents/the-north-face-talus-tent-3-person-3-season-in-golden-oak-saffron-yellow~p~989cg_01~320.jpg",
@@ -68,6 +71,7 @@
   },
   {
     "Id": "985PR",
+    "Available": true,
     "NameWithoutBrand": "Alpine Guide Tent - 3-Person, 4-Season",
     "Name": "The North Face Alpine Guide Tent - 3-Person, 4-Season",
     "Image": "../images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg",
@@ -90,6 +94,7 @@
   },
   {
     "Id": "880RT",
+    "Available": false,
     "NameWithoutBrand": "Ajax Tent - 2-Person, 3-Season",
     "Name": "Marmot Ajax Tent - 2-Person, 3-Season",
     "Image": "../images/tents/marmot-ajax-tent-2-person-3-season-in-pale-pumpkin-terracotta~p~880rt_01~320.jpg",
@@ -113,6 +118,7 @@
 
   {
     "Id": "344YJ",
+    "Available": true,
     "NameWithoutBrand": "Rimrock Tent - 2-Person, 3-Season",
     "Name": "Cedar Ridge Rimrock Tent - 2-Person, 3-Season",
     "IsFamousBrand": false,
