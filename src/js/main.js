@@ -1,5 +1,5 @@
-import ProductData from "./ProductData.mjs"
-import ProductList from "./ProductList.mjs"
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
 
 // Create an instance of ProductData
 const productData = new ProductData("tents");
