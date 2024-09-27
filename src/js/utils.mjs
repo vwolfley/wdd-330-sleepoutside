@@ -28,3 +28,19 @@ export function getParams(param) {
   const product = urlParams.get(param);
   return product;
 }
+
+// Stretch Activity Week 2
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
+  // Clear the parent element if needed
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const htmlStrings = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}

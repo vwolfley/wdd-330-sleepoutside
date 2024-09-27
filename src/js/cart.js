@@ -23,18 +23,18 @@ function renderCartContents() {
 
 function addRemoveButtonEventListeners() {
   const removeButtons = document.querySelectorAll(".cart-card__remove");
-  removeButtons.forEach(button => {
+  removeButtons.forEach((button) => {
     button.addEventListener("click", removeCartItem);
-  })
+  });
 }
 
 function removeCartItem(event) {
   const itemId = event.target.getAttribute("data-id");
   const cartItems = getLocalStorage("so-cart");
 
-  const cartItemRemoved = cartItems.filter(item => item.Id !== itemId);
+  const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
   setLocalStorage("so-cart", cartItemRemoved);
-  
+
   renderCartContents();
 }
 
@@ -60,7 +60,7 @@ function cartItemTemplate(item) {
 
 function cartSubtotal(items) {
   const cartCard = document.querySelector(".cart-card__subtotal");
-  console.log(items);
+  // console.log(items);
   if (items.length <= 0) {
     cartCard.classList.add("hide"); // Hide the cart subtotal
   } else {
