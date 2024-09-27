@@ -11,7 +11,8 @@ export default class ProductDetails {
     console.log(product);
     this.renderProductDetails(product);
 
-    document.getElementById("addToCart")
+    document
+      .getElementById("addToCart")
       .addEventListener("click", () => this.addToCart(product));
   }
 
