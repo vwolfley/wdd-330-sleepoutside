@@ -13,7 +13,7 @@ export default class ProductDetails {
 
     document
       .getElementById("addToCart")
-      .addEventListener("click", this.addToCart(product));
+      .addEventListener("click", () => this.addToCart(product));
   }
 
   addToCart(product) {
