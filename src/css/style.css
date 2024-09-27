@@ -173,6 +173,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  width: 100%;
 }
 
 .cart-card__image {
@@ -200,6 +201,12 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.cart-card__remove {
+  grid-row: 1;
+  grid-column: 4;
+  margin-right: 0;
 }
 
 @media screen and (min-width: 500px) {
