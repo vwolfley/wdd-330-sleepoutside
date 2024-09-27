@@ -60,7 +60,7 @@ function cartItemTemplate(item) {
 
 function cartSubtotal(items) {
   const cartCard = document.querySelector(".cart-card__subtotal");
-  console.log(items);
+  // console.log(items);
   if (items.length <= 0) {
     cartCard.classList.add("hide"); // Hide the cart subtotal
   } else {
