@@ -48,6 +48,7 @@ export default class ProductListing {
     // console.log(list);
     // Filter the list
     const filteredList = this.filterProducts(list);
+    // console.log(filteredList);
     // Render the filtered list
     this.renderList(filteredList);
   }
