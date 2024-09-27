@@ -203,6 +203,11 @@ button {
   grid-column: 3;
 }
 
+.cart-card__subtotal {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  justify-self: center;
+}
 .cart-card__remove {
   grid-row: 1;
   grid-column: 4;
@@ -221,6 +226,10 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+}
+
+.hide {
+  display: none;
 }
 
 footer {
