@@ -22,6 +22,7 @@ export default class ProductDetails {
     setLocalStorage("so-cart", productList);
   }
 
+  // Added suggested retail price and list price on line 36-39
   renderProductDetails(product) {
     const detailsElement = document.querySelector(".product-detail");
     detailsElement.innerHTML = `
@@ -32,8 +33,10 @@ export default class ProductDetails {
           src="${product.Image}"
           alt="${product.Name}"
         />
-        <p class="product-card__price">${product.ListPrice}</p>
-
+    <p class="product-card__price">
+      <span class="product-card__original-price">$${product.SuggestedRetailPrice.toFixed(2)}</span>
+      <span class="product-card__discount-price">${product.ListPrice}</span>
+    </p>
         <p class="product__color">${product.Colors[0].ColorName}</p>
 
         <p class="product__description">

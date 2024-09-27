@@ -154,6 +154,18 @@ button {
 .card__name {
   font-size: 1em;
 }
+
+/* Cross out original price in red and display discount in blue */
+.product-card__original-price {
+  text-decoration: line-through;
+  color: #f00;
+}
+
+.product-card__discount-price {
+  color: rgb(0, 0, 255);
+  font-weight: bold;
+  margin-left: 5px;
+}
 /* End product list card */
 
 .product-detail {
