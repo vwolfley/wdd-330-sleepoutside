@@ -99,4 +99,13 @@ function cartSuperscript(items) {
   }
 }
 
-cartSuperscript()
+function displayCartSupercript() {
+  const cartItems = getLocalStorage("so-cart") || [];
+
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  cartSuperscript(cartItems)
+}
+
+displayCartSupercript();
