@@ -82,3 +82,16 @@ function cartSubtotal(items) {
 }
 
 renderCartContents();
+
+function cartSuperscript(items) {
+  const cartCountElement = document.querySelector(".cart-count");
+  const cartCount = items.length;
+  if (cartCount <= 0) {
+    cartCountElement.classList.add("hide");
+  } else {
+    cartCountElement.classList.remove("hide");
+
+  if (cartCount > 0) {
+    cartCountElement.textContent = cartCount;
+  }
+}
