@@ -53,8 +53,3 @@ export default class ProductListing {
     this.renderList(filteredList);
   }
 }
-
-function updateCartSuperscript(count) {
-  const cartCountElement = document.querySelector(".cart-count");
-  cartCountElement.textContent = count;
-}
