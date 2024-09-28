@@ -90,7 +90,7 @@ function cartSuperscript(items) {
     cartCountElement.classList.add("hide");
   } else {
     cartCountElement.classList.remove("hide");
-
+  }
   if (cartCount > 0) {
     cartCountElement.textContent = cartCount;
   }
