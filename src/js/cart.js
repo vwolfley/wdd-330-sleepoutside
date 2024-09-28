@@ -85,7 +85,7 @@ renderCartContents();
 
 //add superscript to cart icon
 function cartSuperscript(items) {
-  const cartCountElement = document.querySelector(".cart-subscript");
+  const cartCountElement = document.querySelector(".cart-superscript");
   const cartCount = items.length;
   //hide superscript if no items in cart from hide css class
   if (cartCount === 0) {
