@@ -1,7 +1,8 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
+const cartItems = getLocalStorage("so-cart") || [];
+
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
 
   // If there are no items, we can stop here or show a message
   if (cartItems.length === 0) {
@@ -82,3 +83,19 @@ function cartSubtotal(items) {
 }
 
 renderCartContents();
+
+//add superscript to cart icon
+function cartSuperscript() {
+  const cartCountElement = document.querySelector(".cart-superscript");
+  const cartCount = cartItems.length;
+  //hide superscript if no items in cart from hide css class
+  if (cartCount === 0) {
+    cartCountElement.classList.add("hide");
+  } else {
+    cartCountElement.classList.remove("hide");
+  }
+  //if items in cart display number from item length
+  if (cartCount > 0) {
+    cartCountElement.textContent = cartCount;
+  }
+}
