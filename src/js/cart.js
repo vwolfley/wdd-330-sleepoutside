@@ -98,3 +98,5 @@ function cartSuperscript(items) {
     cartCountElement.textContent = cartCount;
   }
 }
+
+cartSuperscript()
