@@ -85,9 +85,9 @@ function cartSubtotal(items) {
 renderCartContents();
 
 //add superscript to cart icon
-function cartSuperscript(items) {
+function cartSuperscript() {
   const cartCountElement = document.querySelector(".cart-superscript");
-  const cartCount = items.length;
+  const cartCount = cartItems.length;
   //hide superscript if no items in cart from hide css class
   if (cartCount === 0) {
     cartCountElement.classList.add("hide");
@@ -99,3 +99,5 @@ function cartSuperscript(items) {
     cartCountElement.textContent = cartCount;
   }
 }
+
+cartSuperscript();
