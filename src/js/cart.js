@@ -100,7 +100,7 @@ function cartSuperscript(items) {
 }
 
 function displayCartSupercript() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage("go-cart") || [];
   const numberItems = cartItems.length;
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
