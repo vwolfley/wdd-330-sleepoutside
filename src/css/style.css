@@ -105,9 +105,9 @@ button {
 
 .cart-count {
   position: absolute;
-  top: -1px;
-  right: -1px;
-  padding: 6px, 2px;
+  top: 5px;
+  right: 5px;
+  padding: 6px, 4px;
   color: white;
   font-size: 12px;
   border-raidus: 50%;
