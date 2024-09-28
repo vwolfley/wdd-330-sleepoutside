@@ -98,14 +98,3 @@ function cartSuperscript(items) {
     cartCountElement.textContent = cartCount;
   }
 }
-
-function displayCartSupercript() {
-  const numberItems = cartItems.length;
-
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-
-  cartSuperscript(numberItems)
-}
-
-displayCartSupercript();
