@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-    const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage("so-cart") || [];
   // If there are no items, we can stop here or show a message
   if (cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML =
