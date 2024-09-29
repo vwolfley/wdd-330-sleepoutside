@@ -1,5 +1,6 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
+import cartSuperscript from "./cart.js";
 
 // Create an instance of ProductData
 const productData = new ProductData("tents");
@@ -10,3 +11,5 @@ const listElement = document.querySelector(".product-list");
 // Create an instance of ProductList
 const productListing = new ProductList("tents", productData, listElement);
 productListing.init();
+
+cartSuperscript(5);
