@@ -88,7 +88,7 @@ renderCartContents();
 
 //add superscript to cart icon
 function cartSuperscript(count) {
-  const cartCountElement = document.querySelector(".cart-superscript");
+  const cartCountElement = document.querySelector(".cart .cart-superscript");
   cartCountElement.textContent = count;
 }
 
