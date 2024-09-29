@@ -90,4 +90,4 @@ function cartSuperscript(count) {
   cartCountElement.textContent = count;
 }
 
-cartSuperscript(5);
+cartSuperscript(cartItems.length);
