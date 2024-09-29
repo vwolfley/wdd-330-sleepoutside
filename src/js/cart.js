@@ -84,18 +84,12 @@ function cartSubtotal(items) {
 
 renderCartContents();
 
+
+
 //add superscript to cart icon
-function cartSuperscript() {
+function cartSuperscript(count) {
   const cartCountElement = document.querySelector(".cart-superscript");
-  const cartCount = cartItems.length;
-  //hide superscript if no items in cart from hide css class
-  if (cartCount === 0) {
-    cartCountElement.classList.add("hide");
-  } else {
-    cartCountElement.classList.remove("hide");
-  }
-  //if items in cart display number from item length
-  if (cartCount > 0) {
-    cartCountElement.textContent = cartCount;
-  }
+  cartCountElement.textContent = count;
 }
+
+cartSuperscript(5);
