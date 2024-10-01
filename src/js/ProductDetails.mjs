@@ -18,7 +18,17 @@ export default class ProductDetails {
 
   addToCart(product) {
     const productList = getLocalStorage("so-cart") || [];
-    productList.push(product);
+
+    const isExist = productList.find((item) => item.Id === product.Id);
+
+    if (isExist) {
+      isExist.FinalPrice += product.FinalPrice;
+      isExist.Qtd += 1;
+    } else {
+      product.Qtd = 1;
+      productList.push(product);
+    }
+
     setLocalStorage("so-cart", productList);
   }
 
