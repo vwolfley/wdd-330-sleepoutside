@@ -1,9 +1,14 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
 
 const cartItems = getLocalStorage("so-cart") || [];
 
 function renderCartContents() {
-
   // If there are no items, we can stop here or show a message
   if (cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML =

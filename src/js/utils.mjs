@@ -44,3 +44,35 @@ export function renderListWithTemplate(
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function renderWithTemplate(
+  templateFn,
+  parentElement,
+  data,
+  callback
+  
+) {
+  console.log(templateFn);
+  parentElement.insertAdjacentHTML("afterbegin", templateFn);
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(path) {
+  const html = await fetch(path).then((res) => res.text());
+  console.log(html);
+  // const template = document.createElement("template");
+  // template.innerHTML = html;
+  return html;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+  
+  const header = document.querySelector("#header");
+  const footer = document.querySelector("#footer");
+  renderWithTemplate(headerTemplate, header);
+  renderWithTemplate(footerTemplate, footer);
+}
