@@ -8,7 +8,6 @@ export default class ProductDetails {
 
   async init() {
     const product = await this.dataSource.findProductById(this.productId);
-    console.log(product);
     this.renderProductDetails(product);
 
     document
@@ -40,7 +39,7 @@ export default class ProductDetails {
         <h2 class="divider">${product.NameWithoutBrand}</h2>
         <img
           class="divider"
-          src="${product.Image}"
+          src="${product.Images.PrimaryLarge}"
           alt="${product.Name}"
         />
     <p class="product-card__price">
