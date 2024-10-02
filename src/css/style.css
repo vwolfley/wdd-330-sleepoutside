@@ -96,6 +96,30 @@ button {
 }
 /* End utility classes */
 
+/* Index categories */
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+
+  margin: 40px 0;
+}
+
+.categories .categories-content {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  margin-top: 16px;
+}
+.categories .categories-content a {
+  text-decoration: none;
+  color: var(--dark-grey);
+  font-weight: 600;
+}
+.categories .categories-content img {
+  width: 150px;
+}
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;

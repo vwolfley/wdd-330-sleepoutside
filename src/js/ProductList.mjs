@@ -3,9 +3,9 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
   return `
     <li class="product-card">
-      <a href="product_pages/?product=${product.Id}">
+      <a href="/product_pages/?product=${product.Id}">
         <img
-          src="${product.Image}"
+          src="${product.Images.PrimaryMedium}"
           alt="${product.Name}"
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -44,12 +44,12 @@ export default class ProductListing {
 
   // Initialize the product listing and fetch the data
   async init() {
-    const list = await this.dataSource.getData();
-    // console.log(list);
+    const list = await this.dataSource.getData(this.category);
     // Filter the list
-    const filteredList = this.filterProducts(list);
-    // console.log(filteredList);
+    // There isnt the property avaliable
+    // const filteredList = this.filterProducts(list);
+
     // Render the filtered list
-    this.renderList(filteredList);
+    this.renderList(list);
   }
 }
