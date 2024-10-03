@@ -4,11 +4,10 @@ import ProductDetails from "./ProductDetails.mjs";
 
 loadHeaderFooter();
 
-const dataSource = new ProductData();
-
 const productId = getParam("product");
-// console.log(productId);
-// console.log(dataSource.findProductById(productId));
+console.log(productId);
+
+const dataSource = new ProductData();
 
 const product = new ProductDetails(productId, dataSource);
 product.init();
