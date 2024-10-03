@@ -22,7 +22,7 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParams(param) {
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
@@ -53,16 +53,19 @@ export function renderWithTemplate(templateFn, parentElement, data, callback) {
 }
 
 async function loadTemplate(path) {
-  const html = await fetch(path).then((res) => res.text());
-  return html;
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
 }
 
+// Function to dynamically load the header and footer into page
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("/partials/header.html");
   const footerTemplate = await loadTemplate("/partials/footer.html");
 
   const header = document.querySelector("#header");
   const footer = document.querySelector("#footer");
+
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
 }

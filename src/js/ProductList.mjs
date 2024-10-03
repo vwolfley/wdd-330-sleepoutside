@@ -44,7 +44,7 @@ export default class ProductListing {
 
   // Initialize the product listing and fetch the data
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     // console.log(list);
     // Filter the list
     const filteredList = this.filterProducts(list);
