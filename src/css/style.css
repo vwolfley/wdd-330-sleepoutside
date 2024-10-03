@@ -106,12 +106,12 @@ button {
 .cart-superscript {
   position: absolute;
   top: 5px;
-  right: 5px;
-  padding: 6px, 4px;
+  right: -9px;
+  padding: 5px 8px;
   color: white;
   font-size: 12px;
-  border-raidus: 50%;
-  background: red;
+  border-radius: 50%;
+  background: #F44336;
 }
 .cart svg {
   width: 25px;
