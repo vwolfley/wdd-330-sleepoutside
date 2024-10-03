@@ -22,9 +22,9 @@ body {
   font-size: var(--font-base);
   color: var(--dark-grey);
 }
-img {
+/* img {
   max-width: 100%;
-}
+} */
 header {
   display: flex;
   justify-content: space-between;
@@ -257,4 +257,32 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* Product Listing Page */
+.pl-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.pl-grid-item {
+  padding: 40px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.2em;
+}
+
+.pl-grid-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.pl-grid-item a {
+  text-decoration: none;
+  cursor: hand;
+  color: var(--dark-grey);
 }
