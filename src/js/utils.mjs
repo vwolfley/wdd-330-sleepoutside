@@ -67,6 +67,27 @@ async function loadTemplate(path) {
   return html;
 }
 
+//add superscript to cart icon
+export function cartSuperscript(cartItems) {
+  const cartCountElement = document.querySelector(".cart-superscript");
+  
+  //hide superscript if no cartItems in cart from hide css class
+  if (cartItems.length === 0) {
+    cartCountElement.classList.add("hide");
+  } else {
+    cartCountElement.classList.remove("hide");
+  }
+
+  const qty = cartItems.reduce((amount, item) => {
+    return amount + item.Qtd;
+  }, 0)
+
+  //if items in cart display number from item length
+  if (qty >= 0) {
+    cartCountElement.textContent = qty;
+  }
+}
+
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("/partials/header.html");
   const footerTemplate = await loadTemplate("/partials/footer.html");

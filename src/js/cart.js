@@ -2,13 +2,16 @@ import {
   getLocalStorage,
   setLocalStorage,
   loadHeaderFooter,
+  cartSuperscript
 } from "./utils.mjs";
 
-loadHeaderFooter();
-
-const cartItems = getLocalStorage("so-cart") || [];
 
 function renderCartContents() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  
+  // Show quantaty of cart item
+  cartSuperscript(cartItems);
+
   // If there are no items, we can stop here or show a message
   if (cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML =
@@ -35,8 +38,8 @@ function addRemoveButtonEventListeners() {
 }
 
 function removeCartItem(event) {
+  const cartItems = getLocalStorage("so-cart") || [];
   const itemId = event.target.getAttribute("data-id");
-  const cartItems = getLocalStorage("so-cart");
 
   const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
   setLocalStorage("so-cart", cartItemRemoved);
@@ -73,8 +76,7 @@ function cartSubtotal(items) {
     cartCard.classList.remove("hide"); // Show the cart subtotal
 
     const subtotal = items.reduce((acc, item) => acc + item.FinalPrice, 0);
-    // console.log({ items, subtotal });
-    const cartCount = items.length;
+    const cartCount = items.reduce((acc, item) => acc + item.Qtd, 0);
     // cart count
     if (cartCount > 1) {
       document.querySelector(".cart-count").textContent = `${cartCount} items`;
@@ -87,21 +89,12 @@ function cartSubtotal(items) {
   }
 }
 
-renderCartContents();
 
-const cartNumber = cartItems.length;
 
-//add superscript to cart icon
-function cartSuperscript() {
-  const cartCountElement = document.querySelector(".cart .cart-superscript");
-  //hide superscript if no items in cart from hide css class
-  if (items.length === 0) {
-    cartCountElement.classList.add("hide");
-  } else {
-    cartCountElement.classList.remove("hide");
-  }
-  //if items in cart display number from item length
-  if (cartNumber > 0) {
-    cartCountElement.textContent = cartCount;
-  }
+async function init()
+{
+  await loadHeaderFooter();
+  renderCartContents();
 }
+
+init();
