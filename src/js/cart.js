@@ -36,7 +36,7 @@ function addRemoveButtonEventListeners() {
 
 function removeCartItem(event) {
   const itemId = event.target.getAttribute("data-id");
-  const cartItems = getLocalStorage("so-cart");
+  // const cartItems = getLocalStorage("so-cart");
 
   const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
   setLocalStorage("so-cart", cartItemRemoved);
