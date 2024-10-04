@@ -25,9 +25,9 @@ export default class ProductListing {
 
   // Stretch Activity Week 2 #2
   // Filter the products that are available
-  filterProducts(list) {
-    return list.filter((product) => product.Available === true);
-  }
+  // filterProducts(list) {
+  //   return list.filter((product) => product.Available === true);
+  // }
 
   // Before Stretch Activity Week 2
   // Render the product listing
@@ -44,12 +44,12 @@ export default class ProductListing {
 
   // Initialize the product listing and fetch the data
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     // console.log(list);
     // Filter the list
-    const filteredList = this.filterProducts(list);
+    // const filteredList = this.filterProducts(list);
     // console.log(filteredList);
     // Render the filtered list
-    this.renderList(filteredList);
+    this.renderList(list);
   }
 }
