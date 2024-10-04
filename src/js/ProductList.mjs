@@ -5,7 +5,7 @@ function productCardTemplate(product) {
     <li class="product-card">
       <a href="/product_pages/?product=${product.Id}">
         <img
-          src="${product.Image}"
+          src="${product.Images.PrimaryMedium}"
           alt="${product.Name}"
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
