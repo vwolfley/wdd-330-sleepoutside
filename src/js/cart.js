@@ -89,19 +89,21 @@ function cartSubtotal(items) {
 
 renderCartContents();
 
-const cartNumber = cartItems.length;
-
 //add superscript to cart icon
-function cartSuperscript() {
-  const cartCountElement = document.querySelector(".cart .cart-superscript");
+function cartSuperscript(items) {
+  const cartCountElement = document.querySelector(".cart-superscript");
+
+  //check if cartCountElement exists
+  if (!cartCountElement) {
+    console.error("No element with class 'cart-superscript' found.");
+    return;
+  }
+  const cartCount = items.length;
   //hide superscript if no items in cart from hide css class
   if (items.length === 0) {
     cartCountElement.classList.add("hide");
   } else {
     cartCountElement.classList.remove("hide");
-  }
-  //if items in cart display number from item length
-  if (cartNumber > 0) {
     cartCountElement.textContent = cartCount;
   }
 }
