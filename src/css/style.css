@@ -110,7 +110,7 @@ button {
   padding: 6px, 4px;
   color: white;
   font-size: 12px;
-  border-raidus: 50%;
+  /* border-raidus: 50%; */
   background: red;
 }
 .cart svg {
