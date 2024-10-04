@@ -5,7 +5,7 @@ import { getParams, loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter()
 
 // Get category type from url
-const category = getParams('category');
+const category = getParams("category");
 
 // Create an instance of ProductData
 const productData = new ProductData();
