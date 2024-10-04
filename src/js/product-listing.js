@@ -7,6 +7,10 @@ loadHeaderFooter()
 // Get category type from url
 const category = getParams("category");
 
+// Added category to header
+const title = category.charAt(0).toUpperCase() + category.slice(1);
+document.querySelector(".title").textContent = title;
+
 // Create an instance of ProductData
 const productData = new ProductData();
 
