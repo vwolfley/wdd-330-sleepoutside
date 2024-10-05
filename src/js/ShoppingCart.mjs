@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartSuperscript } from "./utils.mjs";
 
 function cartItemTemplate(item) {
     return `
@@ -62,6 +62,10 @@ export default class ShoppingCart {
         const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
         setLocalStorage("so-cart", cartItemRemoved);
 
+        // Load cartSuperscript
+        cartSuperscript();
+
+        // Rerender shopping cart
         this.renderCartContents()
     }
 

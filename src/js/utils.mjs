@@ -68,4 +68,23 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
+
+  // Load cartSuperscript
+  cartSuperscript();
+}
+
+//add superscript to cart icon
+export function cartSuperscript() {
+  const cartCountElement = document.querySelector(".cart .cart-superscript");
+  
+  // Get number of items in cart
+  const numCartItems = getLocalStorage("so-cart").length || 0;
+  
+  //hide superscript if no items in cart from hide css class, else show num of items
+  if (numCartItems === 0) {
+    cartCountElement.classList.add("hide");
+  } else {
+    cartCountElement.classList.remove("hide");
+    cartCountElement.textContent = numCartItems;
+  }
 }
