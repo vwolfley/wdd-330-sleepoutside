@@ -224,12 +224,12 @@ button {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
-  padding: .5rem .25rem;
+  padding: 0.5rem 0.25rem;
   margin: auto 0;
 }
 
 .qtd-container {
-  margin: .25rem;
+  margin: 0.25rem;
   max-width: 50px;
 }
 
@@ -238,7 +238,7 @@ button {
   color: white;
   text-align: center;
   font-size: 1.2rem;
-  padding: .5rem;
+  padding: 0.5rem;
   margin: 0;
   max-width: 50px;
 }
@@ -282,7 +282,7 @@ button {
   .qtd-button {
     width: 100%;
     height: 75%;
-    margin: .5rem;
+    margin: 0.5rem;
   }
 }
 
