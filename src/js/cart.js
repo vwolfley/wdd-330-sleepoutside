@@ -8,6 +8,26 @@ loadHeaderFooter();
 
 const cartItems = getLocalStorage("so-cart") || [];
 
+function cartItemTemplate(item) {
+  const newItem = `<li class="cart-card divider">
+  <a href="#" class="cart-card__image">
+    <img
+      src="${item.Images.PrimaryMedium}"
+      alt="${item.Name}"
+    />
+  </a>
+  <a href="#">
+    <h2 class="card__name">${item.Name}</h2>
+  </a>
+  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <button class="cart-card__remove" data-id="${item.Id}">X</button>
+</li>`;
+
+  return newItem;
+}
+
 function renderCartContents() {
   // If there are no items, we can stop here or show a message
   if (cartItems.length === 0) {
@@ -36,32 +56,12 @@ function addRemoveButtonEventListeners() {
 
 function removeCartItem(event) {
   const itemId = event.target.getAttribute("data-id");
-  const cartItems = getLocalStorage("so-cart");
+  // const cartItems = getLocalStorage("so-cart");
 
   const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
   setLocalStorage("so-cart", cartItemRemoved);
 
   renderCartContents();
-}
-
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-  <button class="cart-card__remove" data-id="${item.Id}">X</button>
-</li>`;
-
-  return newItem;
 }
 
 function cartSubtotal(items) {
@@ -89,19 +89,21 @@ function cartSubtotal(items) {
 
 renderCartContents();
 
-const cartNumber = cartItems.length;
-
 //add superscript to cart icon
-function cartSuperscript() {
-  const cartCountElement = document.querySelector(".cart .cart-superscript");
+function cartSuperscript(items) {
+  const cartCountElement = document.querySelector(".cart-superscript");
+
+  //check if cartCountElement exists
+  if (!cartCountElement) {
+    console.error("No element with class 'cart-superscript' found.");
+    return;
+  }
+  const cartCount = items.length;
   //hide superscript if no items in cart from hide css class
   if (items.length === 0) {
     cartCountElement.classList.add("hide");
   } else {
     cartCountElement.classList.remove("hide");
-  }
-  //if items in cart display number from item length
-  if (cartNumber > 0) {
     cartCountElement.textContent = cartCount;
   }
 }

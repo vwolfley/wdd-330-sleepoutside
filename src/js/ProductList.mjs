@@ -3,9 +3,9 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
   return `
     <li class="product-card">
-      <a href="product_pages/?product=${product.Id}">
+      <a href="/product_pages/?product=${product.Id}">
         <img
-          src="${product.Image}"
+          src="${product.Images.PrimaryMedium}"
           alt="${product.Name}"
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -44,12 +44,14 @@ export default class ProductListing {
 
   // Initialize the product listing and fetch the data
   async init() {
-    const list = await this.dataSource.getData();
-    // console.log(list);
-    // Filter the list
-    const filteredList = this.filterProducts(list);
-    // console.log(filteredList);
-    // Render the filtered list
-    this.renderList(filteredList);
+    const list = await this.dataSource.getData(this.category);
+    // render the list
+    this.renderList(list);
+
+    //set the title to the current category
+    // Capitalize the first letter of the category
+    const title =
+      this.category.charAt(0).toUpperCase() + this.category.slice(1);
+    document.querySelector(".title").innerHTML = title;
   }
 }
