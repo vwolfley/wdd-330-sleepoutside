@@ -36,9 +36,20 @@ export default class ProductListing {
   //   this.listElement.innerHTML = info;
   // }
 
+  // Sort the products/list by price or name
+  sortList(list, criteria) {
+    if (criteria === "name") {
+      return list.sort((a, b) => a.Name.localeCompare(b.Name));
+    } else if (criteria === "price") {
+      return list.sort((a, b) => a.FinalPrice - b.FinalPrice);
+    }
+    return list;
+  }
+
   // After Stretch Activity Week 2
   // Render the product listing
   renderList(list) {
+    this.listElement.innerHTML = ""; // Clear the current list before rendering
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 
@@ -47,6 +58,13 @@ export default class ProductListing {
     const list = await this.dataSource.getData(this.category);
     // render the list
     this.renderList(list);
+
+    // Sort the products/list by price or name
+    const sortElement = document.getElementById("sort");
+    sortElement.addEventListener("change", (event) => {
+      const sortedList = this.sortList(list, event.target.value);
+      this.renderList(sortedList);
+    });
 
     //set the title to the current category
     // Capitalize the first letter of the category
