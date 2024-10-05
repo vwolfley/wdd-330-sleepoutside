@@ -13,8 +13,12 @@ function cartItemTemplate(item) {
                 <h2 class="card__name">${item.Name}</h2>
             </a>
             <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-            <p class="cart-card__quantity">qty: 1</p>
-            <p class="cart-card__price">$${item.FinalPrice}</p>
+            <div class="qtd-container">
+                <p class="qtd-button" id="qtdUp" data-id="${item.Id}">+</p>
+                <p class="cart-card__quantity">qty: ${item.Qtd}</p>
+                <p class="qtd-button" id="qtdDown" data-id="${item.Id}">-</p>
+            </div>
+            <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
             <button class="cart-card__remove" data-id="${item.Id}">X</button>
         </li>
     `;
@@ -42,16 +46,66 @@ export default class ShoppingCart {
         // Set the total price of the cart
         this.cartSubtotal(cartItems);
 
-        // console.log(cartItems);
-        this.addRemoveButtonEventListeners();
-    }
-
-    // Adds event listeners to the remove button
-    addRemoveButtonEventListeners() {
+        // Create events listeners for removing items from the card
         const removeButtons = document.querySelectorAll(".cart-card__remove");
         removeButtons.forEach((button) => {
             button.addEventListener("click", (event) => this.removeCartItem(event));
         });
+
+        // Create event listeners for qtd down button
+        const qtdDownButton = document.querySelectorAll("#qtdDown");
+        qtdDownButton.forEach(button => {
+            button.addEventListener("click", event => this.decreaseQtdBy1(event));
+        });
+
+        // Create event listeners for qtd up button
+        const qtdUpButton = document.querySelectorAll("#qtdUp");
+        qtdUpButton.forEach(button => {
+            button.addEventListener("click", event => this.increaseQtdBy1(event));
+        });
+    }
+
+    // Decreases qtd by 1
+    decreaseQtdBy1(event) {
+        const itemId = event.target.getAttribute("data-id");
+        const cartItems = getLocalStorage("so-cart");
+
+        // Get index of item with matching id
+        const itemIndex = cartItems.findIndex(item => item.Id === itemId);
+
+        // Check if qtd is 1, remove item from cart if so
+        if (cartItems[itemIndex].Qtd === 1) {
+            this.removeCartItem(event);
+        } else {
+            // Decrease item qtd by 1
+            cartItems[itemIndex].Qtd -= 1;
+            cartItems[itemIndex].FinalPrice -= cartItems[itemIndex].ListPrice;
+    
+            // Update cart in localStorage with new qtd
+            setLocalStorage("so-cart", cartItems);
+
+            // Rerender cart items
+            this.renderCartContents();
+        }
+    }
+
+    // Increases qtd by 1
+    increaseQtdBy1(event) {
+        const itemId = event.target.getAttribute("data-id");
+        const cartItems = getLocalStorage("so-cart");
+
+        // Get index of item with matching id
+        const itemIndex = cartItems.findIndex(item => item.Id === itemId);
+
+        // Increase item qtd by 1
+        cartItems[itemIndex].Qtd += 1;
+        cartItems[itemIndex].FinalPrice += cartItems[itemIndex].ListPrice;
+
+        // Update cart in localStorage with new qtd
+        setLocalStorage("so-cart", cartItems);
+
+        // Rerender cart items
+        this.renderCartContents();
     }
 
     // Removes an item from the cart
@@ -88,7 +142,7 @@ export default class ShoppingCart {
             }
 
             // cart subtotal
-            document.querySelector(".cart-subtotal").textContent = ` $${subtotal}`;
+            document.querySelector(".cart-subtotal").textContent = ` $${subtotal.toFixed(2)}`;
         }
     }
 }
