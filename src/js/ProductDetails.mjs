@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartSuperscript } from "./utils.mjs";
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -30,6 +30,9 @@ export default class ProductDetails {
     }
 
     setLocalStorage("so-cart", productList);
+
+    // Load cartSuperscript
+    cartSuperscript();
   }
 
   // Added suggested retail price and list price on line 36-39
