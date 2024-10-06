@@ -231,6 +231,7 @@ button {
 .qtd-container {
   margin: 0.25rem;
   max-width: 50px;
+  justify-self: right;
 }
 
 .qtd-button {
@@ -246,6 +247,8 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+  margin-right: 1rem;
+  text-align: right;
 }
 
 .cart-card__subtotal {

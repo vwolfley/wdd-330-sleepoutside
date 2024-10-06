@@ -14,9 +14,9 @@ function cartItemTemplate(item) {
             </a>
             <p class="cart-card__color">${item.Colors[0].ColorName}</p>
             <div class="qtd-container">
-                <p class="qtd-button" id="qtdUp" data-id="${item.Id}">+</p>
+                <div class="qtd-button" id="qtdUp" data-id="${item.Id}">+</div>
                 <p class="cart-card__quantity">qty: ${item.Qtd}</p>
-                <p class="qtd-button" id="qtdDown" data-id="${item.Id}">-</p>
+                <div class="qtd-button" id="qtdDown" data-id="${item.Id}">-</div>
             </div>
             <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
             <button class="cart-card__remove" data-id="${item.Id}">X</button>
