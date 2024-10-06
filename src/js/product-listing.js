@@ -1,4 +1,4 @@
-import { loadHeaderFooter, getParam } from "./utils.mjs";
+import { loadHeaderFooter, getParam, performSearch } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 
@@ -15,3 +15,4 @@ const listElement = document.querySelector(".product-list");
 // Create an instance of ProductList
 const productListing = new ProductList(category, dataSource, listElement);
 productListing.init();
+

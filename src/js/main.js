@@ -1,5 +1,5 @@
 // import ProductData from "./ProductData.mjs";
-// import ProductList from "./ProductList.mjs";
+import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
 // Create an instance of ProductData
@@ -13,3 +13,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 // productListing.init();
 
 loadHeaderFooter();
+
+
+
+

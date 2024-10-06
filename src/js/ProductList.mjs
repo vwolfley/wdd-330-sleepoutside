@@ -32,13 +32,6 @@ export default class ProductListing {
     return list.filter((product) => product.Available === true);
   }
 
-  // Before Stretch Activity Week 2
-  // Render the product listing
-  // renderList(list) {
-  //   const info = list.map((product) => productCardTemplate(product)).join("");
-  //   this.listElement.innerHTML = info;
-  // }
-
   // Sort the products/list by price or name
   sortList(list, criteria) {
     if (criteria === "name") {
@@ -49,7 +42,6 @@ export default class ProductListing {
     return list;
   }
 
-  // After Stretch Activity Week 2
   // Render the product listing
   renderList(list) {
     this.listElement.innerHTML = ""; // Clear the current list before rendering

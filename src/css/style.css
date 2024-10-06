@@ -325,3 +325,21 @@ footer {
   cursor: hand;
   color: var(--dark-grey);
 }
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchInput {
+  margin-right: 5px;
+  padding: 1em 2em;
+}
