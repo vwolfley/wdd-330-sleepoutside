@@ -68,4 +68,23 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
+
+  searchProducts();
+}
+
+function searchProducts() {
+  const sButton = document.getElementById("searchButton");
+  sButton.addEventListener("click", function (e) {
+    const searchTerm = document.getElementById("searchInput").value;
+    // console.log("Searching for:", searchTerm);
+
+    performSearch(searchTerm);
+  });
+
+}
+
+export function performSearch(term) {
+  console.log("Performing search for:", term);
+  // Add your search logic here
+  return term;
 }
