@@ -70,6 +70,9 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footerTemplate, footer);
 
   searchProducts();
+
+    // Load cartSuperscript
+    cartSuperscript();
 }
 
 function searchProducts() {
@@ -87,9 +90,6 @@ export function performSearch(term) {
   console.log("Performing search for:", term);
   // Add your search logic here
   return term;
-  
-  // Load cartSuperscript
-  cartSuperscript();
 }
 
 //add superscript to cart icon
