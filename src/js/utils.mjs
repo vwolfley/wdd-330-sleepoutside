@@ -71,8 +71,8 @@ export async function loadHeaderFooter() {
 
   searchProducts();
 
-    // Load cartSuperscript
-    cartSuperscript();
+  // Load cartSuperscript
+  cartSuperscript();
 }
 
 function searchProducts() {
