@@ -343,3 +343,44 @@ footer {
   margin-right: 5px;
   padding: 1em 2em;
 }
+
+/* Checkout page */
+.form-checkout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 300px 1fr;
+}
+.form-checkout .summary h3 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 16px;
+  color: #525b0f;
+}
+.form-checkout .summary table{
+  display: grid;
+  border: 1px solid #525b0f;
+}
+
+.form-checkout fieldset {
+  display: grid;
+  gap: 2px;
+
+  margin-bottom: 16px;
+}
+.form-checkout fieldset legend {
+  font-size: 14px;
+  color: #525b0f;
+  font-weight: 600;
+}
+
+.form-checkout fieldset label {
+  margin-top: 8px;
+}
+
+.form-checkout fieldset input {
+  height: 40px;
+}
+
+.form-checkout button {
+  margin-bottom: 40px;
+}
