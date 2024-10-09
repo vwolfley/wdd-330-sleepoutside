@@ -28,13 +28,20 @@ export default class CheckoutProcess {
   }
 
   calculateOrdertotal() {
-    console.log(this.list)
+    console.log(this.list);
     // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
-    this.shipping = this.list.map((item, index) => {
-        
-    })
+    const quantaty = this.list.reduce(
+      (quantaty, item, currentIndex) => {
+        if (currentIndex === 0) {
+            quantaty += 10; // First item costs $10
+          } else {
+            quantaty += 2; // Each additional item costs $2
+          }
+      },
+      0,
+    );
 
-    this.tax = (this.itemTotal * .06).toFixed(2);
+    this.tax = (this.itemTotal * 0.06).toFixed(2);
     // display the totals.
     this.displayOrderTotals();
   }
@@ -42,9 +49,9 @@ export default class CheckoutProcess {
   displayOrderTotals() {
     // once the totals are all calculated display them in the order summary page
     const amountElement = document.querySelector("#subtotal");
-    amountElement.innerHTML = this.itemTotal
+    amountElement.innerHTML = this.itemTotal;
 
     const taxElemnt = document.querySelector("#tax");
-    taxElemnt.innerHTML = this.tax
+    taxElemnt.innerHTML = this.tax;
   }
 }
