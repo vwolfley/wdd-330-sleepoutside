@@ -24,24 +24,28 @@ export default class CheckoutProcess {
       0,
     );
     this.itemTotal = amount;
-    //this.calculateOrdertotal();
   }
 
   calculateOrdertotal() {
     console.log(this.list);
     // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
-    const quantaty = this.list.reduce(
-      (quantaty, item, currentIndex) => {
-        if (currentIndex === 0) {
-            quantaty += 10; // First item costs $10
-          } else {
-            quantaty += 2; // Each additional item costs $2
-          }
-      },
-      0,
-    );
+
+    this.shipping = this.list.reduce((totalCost, item, index) => {
+      if (item.Qtd === 1 && index === 0) {
+        totalCost += 10; // First item costs $10
+      } else if (item.Qtd > 1 && index > 0) {
+        totalCost += 2 * item.Qtd; // Each additional item costs $2
+      } else {
+        totalCost += 2;
+      }
+      return totalCost;
+    }, 0);
+    // console.log(this.shipping);
 
     this.tax = (this.itemTotal * 0.06).toFixed(2);
+
+
+    this.orderTotal = this.itemTotal + this.shipping + parseFloat(this.tax);
     // display the totals.
     this.displayOrderTotals();
   }
@@ -51,7 +55,13 @@ export default class CheckoutProcess {
     const amountElement = document.querySelector("#subtotal");
     amountElement.innerHTML = this.itemTotal;
 
-    const taxElemnt = document.querySelector("#tax");
-    taxElemnt.innerHTML = this.tax;
+    const shippingElement = document.querySelector("#shipping");
+    shippingElement.innerHTML = this.shipping.toFixed(2);
+
+    const taxElement = document.querySelector("#tax");
+    taxElement.innerHTML = this.tax;
+
+    const orderTotalElement = document.querySelector("#order-total");
+    orderTotalElement.innerHTML = this.orderTotal.toFixed(2);
   }
 }
