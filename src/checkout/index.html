@@ -19,6 +19,55 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+      <section class="form-checkout">
+        <div class="summary">
+          <h3>Summary</h3>
+          <table>
+            <tr>
+              <td>Subtotal: <span id="subtotal"></span></td>
+            </tr>
+            <tr>
+              <td>Shipping Estimate: </td>
+            </tr>
+            <tr>
+              <td>Tax:</td>
+            </tr>
+            <tr>
+              <td>Order Total:</td>
+            </tr>
+          </table>
+        </div>
+        <form action="">
+          <fieldset>
+            <legend>Customer Name</legend>
+            <label for="first_name">First Name</label>
+            <input required type="text" name="first_name" id="first_name">
+            <label for="last_name">Last Name</label>
+            <input required type="text" name="last_name" id="last_name">
+          </fieldset>
+          <fieldset>
+            <legend>Address</legend>
+            <label for="street">Street Address</label>
+            <input required type="text" name="street" id="street">
+            <label for="city">City</label>
+            <input required type="text" name="city" id="city">
+            <label for="state">State</label>
+            <input required type="text" name="state" id="state">
+            <label for="zipcode">Zip Code</label>
+            <input required type="text" name="zipcode" id="zipcode">
+          </fieldset>
+          <fieldset>
+            <legend>Payment</legend>
+            <label for="card-number">Credit Card Number</label>
+            <input required type="text" name="card-number" id="card-number">
+            <label for="expiration-date">Expiration Date</label>
+            <input required type="text" name="expiration-date" id="expiration-date">
+            <label for="security-code">Security Code</label>
+            <input required type="number" name="security-code" id="security-code">
+          </fieldset>
+          <button type="submit">Pay</button>
+        </form>
+      </section>
     </main>
 
     <footer id="footer"></footer>
