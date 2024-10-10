@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, cartSuperscript } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartSuperscript, alertMessage } from "./utils.mjs";
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -27,9 +27,11 @@ export default class ProductDetails {
     } else {
       product.Qtd = 1;
       productList.push(product);
+      alertMessage(`${product.NameWithoutBrand} added to cart!`);
     }
 
     setLocalStorage("so-cart", productList);
+    
 
     // Load cartSuperscript
     cartSuperscript();

@@ -125,7 +125,7 @@ export default class ShoppingCart {
 
   // Calculates the cart subtotal
   cartSubtotal(items) {
-    console.log(items);
+    // console.log(items);
     const cartCard = document.querySelector(".cart-card__subtotal");
     if (items.length <= 0) {
       cartCard.classList.add("hide"); // Hide the cart subtotal
