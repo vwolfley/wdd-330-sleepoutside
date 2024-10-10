@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, cartSuperscript } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartSuperscript, alertMessage} from "./utils.mjs";
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -30,6 +30,9 @@ export default class ProductDetails {
     }
 
     setLocalStorage("so-cart", productList);
+
+    // Alert message
+    alertMessage("Great choice! Your product is now in the cart.", "alert-success");
 
     // Load cartSuperscript
     cartSuperscript();

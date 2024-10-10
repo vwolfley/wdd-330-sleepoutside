@@ -122,3 +122,24 @@ export function cartSuperscript() {
     cartCountElement.textContent = numCartItems;
   }
 }
+
+export function alertMessage(message, typeMessage="alert-error", scroll=true) {
+  const htlm = `
+    <div class="alert ${typeMessage}">
+      <p>${message}</p>
+      <button class="close-message" type="button">X</button>
+    </div>
+  `;
+  const mainElement = document.querySelector("main");
+  mainElement.insertAdjacentHTML("afterbegin",htlm)
+
+  document.querySelectorAll('.close-message').forEach(button => {
+    button.addEventListener('click', function() {
+      this.parentElement.remove();
+    });
+  });
+
+  if(scroll)
+    window.scrollTo(0, 0);
+
+}

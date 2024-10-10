@@ -30,6 +30,9 @@ header {
   justify-content: space-between;
   padding: 0 10px;
 }
+.hidden {
+  display: none;
+}
 .logo {
   line-height: 60px;
   width: 245px;
@@ -202,6 +205,7 @@ button {
   /* max-height: 120px; */
   align-items: center;
   width: 100%;
+  padding: 10px;
 }
 
 .cart-card__image {
@@ -383,4 +387,58 @@ footer {
 
 .form-checkout button {
   margin-bottom: 40px;
+}
+
+/* Success page */
+
+.message-success {
+  width: 80%;
+  margin: 40px auto;
+  padding: 30px;
+  text-align: center;
+  background: #8bc34a57;
+  color: green;
+}
+
+/* Alert message */
+.alert {
+  display: grid;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
+  grid-template-columns: 1fr 40px;
+  padding: 10px;
+  margin-top: 8px;
+}
+.alert.alert-error {
+  background: #f4433642;
+  color: #F44336;
+}
+.alert.alert-success {
+  background: #8bc34a57;
+  color: green;
+}
+.alert button {
+  background: transparent;
+  color: #000;
+  width: 40px;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+
+  button {
+    width: 100px;
+    padding: 10px;
+  }
+ 
+  .form-checkout {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .alert {
+    width: 90%;
+  }
+
 }

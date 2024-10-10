@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -101,11 +101,19 @@ export default class CheckoutProcess {
     json.tax = this.tax;
     json.shipping = this.shipping;
     json.items = packageItems(this.list);
-    console.log(json);
     try {
       const res = await services.checkout(json);
-      console.log(res);
+      // clear cart
+      setLocalStorage("so-cart", null);
+      const orderId = res.orderId;
+      const orderMessage = res.message;
+      window.location.href = `/checkout/success.html?orderid=${orderId}&message=${orderMessage}`;
     } catch (err) {
+
+      if(err.message?.cardNumber) { alertMessage(err.message.cardNumber) }
+      if(err.message?.expiration) { alertMessage(err.message.expiration) }
+
+
       console.log(err);
     }
   }

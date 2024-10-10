@@ -37,6 +37,8 @@ export default class ShoppingCart {
             document.querySelector(".product-list").innerHTML =
             "<p>Your cart is empty.</p>";
             this.cartSubtotal(cartItems);
+            const btnCheckout = document.querySelector("#btn-checkout")
+            btnCheckout.classList.add("hidden");
             return;
         }
         // If there are items, we can render them
