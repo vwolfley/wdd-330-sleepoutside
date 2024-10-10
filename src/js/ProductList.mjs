@@ -18,6 +18,13 @@ function productCardTemplate(product) {
     </li>`;
 }
 
+function errorTemplate() {
+  return `
+    <div class="product-error">
+      <p>Sorry we could not find that product for you!  Please select again.</p>
+    </div>`;
+}
+
 export default class ProductListing {
   constructor(category, dataSource, listElement) {
     this.products = [];
@@ -45,6 +52,15 @@ export default class ProductListing {
   // Render the product listing
   renderList(list) {
     this.listElement.innerHTML = ""; // Clear the current list before rendering
+    if (list.length === 0) {
+      renderListWithTemplate(
+        errorTemplate,
+        this.listElement,
+        list,
+        "afterend",
+        false,
+      );
+    }
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 

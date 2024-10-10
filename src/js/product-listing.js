@@ -15,4 +15,3 @@ const listElement = document.querySelector(".product-list");
 // Create an instance of ProductList
 const productListing = new ProductList(category, dataSource, listElement);
 productListing.init();
-

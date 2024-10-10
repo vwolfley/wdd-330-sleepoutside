@@ -13,7 +13,3 @@ import { loadHeaderFooter } from "./utils.mjs";
 // productListing.init();
 
 loadHeaderFooter();
-
-
-
-

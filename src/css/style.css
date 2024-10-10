@@ -356,7 +356,7 @@ footer {
   margin-bottom: 16px;
   color: #525b0f;
 }
-.form-checkout .summary table{
+.form-checkout .summary table {
   display: grid;
   border: 1px solid #525b0f;
 }
