@@ -91,7 +91,7 @@ export default class CheckoutProcess {
     orderTotalElement.innerHTML = this.orderTotal.toFixed(2);
   }
 
-  async checkout(form) {
+  async checkout() {
     const formElement = document.forms["checkout"];
 
     const json = formDataToJSON(formElement);
@@ -105,6 +105,8 @@ export default class CheckoutProcess {
     try {
       const res = await services.checkout(json);
       console.log(res);
+      setLocalStorage("so-cart", []);
+      location.assign("/checkout/success.html");
     } catch (err) {
       console.log(err);
     }
