@@ -37,42 +37,42 @@
             </tr>
           </table>
         </div>
-        <form action="">
+        <form name="checkout" action="">
           <fieldset>
             <legend>Customer Name</legend>
-            <label for="first_name">First Name</label>
-            <input required type="text" name="first_name" id="first_name" />
-            <label for="last_name">Last Name</label>
-            <input required type="text" name="last_name" id="last_name" />
+            <label for="fname">First Name</label>
+            <input required type="text" name="fname" id="fname" />
+            <label for="lname">Last Name</label>
+            <input required type="text" name="lname" id="lname" />
           </fieldset>
           <fieldset>
             <legend>Address</legend>
-            <label for="street">Street Address</label>
+            <label for="street">street Address</label>
             <input required type="text" name="street" id="street" />
             <label for="city">City</label>
             <input required type="text" name="city" id="city" />
             <label for="state">State</label>
             <input required type="text" name="state" id="state" />
-            <label for="zipcode">Zip Code</label>
-            <input required type="text" name="zipcode" id="zipcode" />
+            <label for="zip">Zip Code</label>
+            <input required type="text" name="zip" id="zip" />
           </fieldset>
           <fieldset>
             <legend>Payment</legend>
-            <label for="card-number">Credit Card Number</label>
-            <input required type="text" name="card-number" id="card-number" />
-            <label for="expiration-date">Expiration Date</label>
+            <label for="cardNumber">Credit Card Number</label>
+            <input required type="text" name="cardNumber" id="cardNumber" />
+            <label for="expiration">Expiration Date</label>
             <input
               required
               type="text"
-              name="expiration-date"
-              id="expiration-date"
+              name="expiration"
+              id="expiration"
             />
-            <label for="security-code">Security Code</label>
+            <label for="code">Security Code</label>
             <input
               required
               type="number"
-              name="security-code"
-              id="security-code"
+              name="code"
+              id="code"
             />
           </fieldset>
           <button id="paySubmit" type="submit">Pay</button>
