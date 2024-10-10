@@ -107,7 +107,7 @@ button {
   position: absolute;
   top: 5px;
   right: 5px;
-  padding: 6px; 
+  padding: 6px;
   color: white;
   font-size: 12px;
   border-radius: 50%;
@@ -126,15 +126,14 @@ button {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
     transform: scale(1.3);
   }
 }
-
-
 
 .cart svg {
   width: 25px;
