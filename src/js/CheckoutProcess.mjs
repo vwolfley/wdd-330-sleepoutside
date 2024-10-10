@@ -2,6 +2,7 @@ import { getLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
+
 function formDataToJSON(formElement) {
   const formData = new FormData(formElement),
     convertedJSON = {};
@@ -54,7 +55,6 @@ export default class CheckoutProcess {
   }
 
   calculateOrdertotal() {
-    console.log(this.list);
     // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
 
     this.shipping = this.list.reduce((totalCost, item, index) => {
