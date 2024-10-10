@@ -2,8 +2,8 @@ import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
-const mycheckout = new CheckoutProcess("so-cart");
-mycheckout.init();
+const myCheckout = new CheckoutProcess("so-cart");
+myCheckout.init();
 
 document
   .querySelector("#zip")

@@ -2,8 +2,6 @@
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
@@ -34,15 +32,20 @@ export function renderListWithTemplate(
   templateFn,
   parentElement,
   list,
-  position = "afterbegin",
+  position,
   clear = false,
 ) {
   // Clear the parent element if needed
   if (clear) {
     parentElement.innerHTML = "";
   }
-  const htmlStrings = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  if (list.length === 0) {
+    parentElement.insertAdjacentHTML(position, templateFn());
+  } else {
+    position = "afterbegin";
+    const htmlStrings = list.map(templateFn);
+    parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  }
 }
 
 export function renderWithTemplate(templateFn, parentElement, data, callback) {
@@ -79,27 +82,38 @@ function searchProducts() {
   const sButton = document.getElementById("searchButton");
   sButton.addEventListener("click", function (e) {
     const searchTerm = document.getElementById("searchInput").value;
-    // console.log("Searching for:", searchTerm);
 
     performSearch(searchTerm);
   });
-
 }
 
 export function performSearch(term) {
   console.log("Performing search for:", term);
-  // Add your search logic here
-  return term;
+
+  // Create the URL with the search term as a query parameter
+  const searchParams = new URLSearchParams();
+  searchParams.append("category", term);
+
+  // Get the current URL without the query string
+  const baseUrl = `${window.location.origin}/`;
+  console.log("Base URL:", baseUrl);
+
+  // Construct the full URL
+  const newUrl = `product-listing/index.html?${searchParams.toString()}`;
+  console.log("New URL:", newUrl);
+
+  // Navigate to the new URL
+  window.location.href = baseUrl + newUrl;
 }
 
 //add superscript to cart icon
 export function cartSuperscript() {
   const cartCountElement = document.querySelector(".cart .cart-superscript");
-  
+
   // Get number of items in cart
   const cartItems = getLocalStorage("so-cart") || [];
   const numCartItems = cartItems.length;
-  
+
   //hide superscript if no items in cart from hide css class, else show num of items
   if (numCartItems === 0) {
     cartCountElement.classList.add("hide");

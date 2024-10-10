@@ -61,4 +61,6 @@ export default class ProductDetails {
         </div>
     `;
   }
+
+
 }
