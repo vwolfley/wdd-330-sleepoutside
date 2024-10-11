@@ -284,6 +284,17 @@ button {
   margin-right: 0;
 }
 
+#breadcrumbs {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#breadcrumbs .path{
+  text-transform: capitalize;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
