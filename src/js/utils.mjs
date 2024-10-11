@@ -113,7 +113,7 @@ export function cartSuperscript() {
   // Get number of items in cart
   const cartItems = getLocalStorage("so-cart") || [];
   const numCartItems = cartItems.reduce((acc, item) => acc + item.Qtd, 0);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   //hide superscript if no items in cart from hide css class, else show num of items
   if (numCartItems === 0) {
