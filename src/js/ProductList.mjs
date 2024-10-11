@@ -64,9 +64,16 @@ export default class ProductListing {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 
+  handleBrandCrumbs() {
+    const breadcrumbsElement = document.querySelector("#breadcrumbs");
+    breadcrumbsElement.innerHTML = `<span class="path">${this.category}</span> <span class="arrow">></span><span class="path">(${this.products.length} items)</span>`
+
+  }
+
   // Initialize the product listing and fetch the data
   async init() {
     const list = await this.dataSource.getData(this.category);
+    this.products = list;
     // render the list
     this.renderList(list);
 
@@ -82,5 +89,6 @@ export default class ProductListing {
     const title =
       this.category.charAt(0).toUpperCase() + this.category.slice(1);
     document.querySelector(".title").innerHTML = title;
+    this.handleBrandCrumbs();
   }
 }

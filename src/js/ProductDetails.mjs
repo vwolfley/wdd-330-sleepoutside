@@ -8,8 +8,10 @@ export default class ProductDetails {
 
   async init() {
     const product = await this.dataSource.findProductById(this.productId);
+    this.product = product;
     // console.log(product);
     this.renderProductDetails(product);
+    this.handleBrandCrumbs();
 
     document
       .getElementById("addToCart")
@@ -33,6 +35,11 @@ export default class ProductDetails {
 
     // Load cartSuperscript
     cartSuperscript();
+  }
+
+  handleBrandCrumbs() {
+    const breadcrumbsElement = document.querySelector("#breadcrumbs");
+    breadcrumbsElement.innerHTML = `<span class="path">${this.product.Category}</span>`
   }
 
   // Added suggested retail price and list price on line 36-39
