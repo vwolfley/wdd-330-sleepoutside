@@ -11,3 +11,4 @@ const dataSource = new ExternalServices();
 
 const product = new ProductDetails(productId, dataSource);
 product.init();
+

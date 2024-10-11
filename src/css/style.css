@@ -91,6 +91,14 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+button:hover {
+  background-color: var(--tertiary-color);
+}
+
+.button--small {
+  padding: 0.5em 1em;
+  font-size: var(--small-font);
+}
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -464,13 +472,12 @@ footer {
 }
 .modal .modal-content {
   background-color: white;
-  padding: 0 20px;
+  padding: 25px;
   border-radius: 10px;
-  width: 80%;
+  width: 50%;
   height: auto;
   text-align: center;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   margin-top: 100px;
-  text-align: center;
 }
