@@ -40,7 +40,6 @@ function wishlistTemplate(item) {
                 <h2 class="card__name">${item.Name}</h2>
             </a>
             <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-            <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
             <button class="to-cart-button" data-id="${item.Id}">Move to Cart</button>
         </li>
     `;
@@ -53,28 +52,20 @@ export default class ShoppingCart {
   renderCartContents() {
     // Get cart contents from localStorage if any
     const cartItems = getLocalStorage("so-cart") || [];
-    const wishlistItems = getLocalStorage("wishlist") || [];
+
+    // Render wishlist items
+    this.renderWishlist();
 
     // If there are no items, we can stop here or show a message
     if (cartItems.length === 0) {
       document.querySelector(".product-list").innerHTML =
         "<p>Your cart is empty.</p>";
       this.cartSubtotal(cartItems);
-      // Check for wishlist items
-      if (wishlistItems.length === 0) document.querySelector(".wishlist-items").innerHTML = "<p>Your wishlist is empty</p>"
       return;
     }
     // If there are items, we can render them
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
-    
-    // Check for wishlist items and render them if any
-    if (wishlistItems.length === 0) {
-      document.querySelector(".wishlist-items").innerHTML = "<p>Your wishlist is empty</p>"
-    } else {
-      const htmlWishlistItems = wishlistItems.map((item) => wishlistTemplate(item));
-      document.querySelector(".wishlist-items").innerHTML = htmlWishlistItems.join("");
-    }
 
     // Set the total price of the cart
     this.cartSubtotal(cartItems);
@@ -96,6 +87,34 @@ export default class ShoppingCart {
     qtdUpButton.forEach((button) => {
       button.addEventListener("click", (event) => this.increaseQtdBy1(event));
     });
+
+    // Create event listener for move to wishlist button
+    document
+      .querySelectorAll(".to-wishlist-button")
+      .forEach(button => {
+        button.addEventListener("click", event => this.moveToWishlist(event));
+      });
+  }
+
+  // Renders the wishlist items
+  renderWishlist() {
+    const wishlistItems = getLocalStorage("wishlist") || [];
+
+    // Check for wishlist items and render them if any
+    if (wishlistItems.length === 0) {
+      document.querySelector(".wishlist-items").innerHTML = "<p>Your wishlist is empty</p>";
+      return
+    } 
+
+    const htmlWishlistItems = wishlistItems.map((item) => wishlistTemplate(item));
+    document.querySelector(".wishlist-items").innerHTML = htmlWishlistItems.join("");
+
+    // Create event listener for move to cart button
+    document
+      .querySelectorAll(".to-cart-button")
+      .forEach(button => {
+        button.addEventListener("click", event => this.moveToCart(event));
+      });
   }
 
   // Decreases qtd by 1
@@ -179,5 +198,53 @@ export default class ShoppingCart {
       document.querySelector(".cart-subtotal").textContent =
         ` $${subtotal.toFixed(2)}`;
     }
+  }
+
+  // Moves an item from the cart to the wishlist
+  moveToWishlist(event) {
+    const itemId = event.target.getAttribute("data-id");
+    const cartItems = getLocalStorage("so-cart");
+    const wishlistItems = getLocalStorage("wishlist") || []
+
+    // Get index of item with matching id
+    const itemIndex = cartItems.findIndex((item) => item.Id === itemId);
+
+    // Add item to wishlist
+    wishlistItems.push(cartItems[itemIndex]);
+    setLocalStorage("wishlist", wishlistItems)
+
+    // Remove item from cart
+    const cartItemRemoved = cartItems.filter((item) => item.Id !== itemId);
+    setLocalStorage("so-cart", cartItemRemoved);
+
+    // Load cartSuperscript
+    cartSuperscript();
+
+    // Rerender shopping cart
+    this.renderCartContents();
+  }
+
+  // Move an item from the wishlist to the cart
+  moveToCart(event) {
+    const itemId = event.target.getAttribute("data-id");
+    const cartItems = getLocalStorage("so-cart") || [];
+    const wishlistItems = getLocalStorage("wishlist");
+
+    // Get index of item with matching id
+    const itemIndex = wishlistItems.findIndex((item) => item.Id === itemId);
+
+    // Add item to cart
+    cartItems.push(wishlistItems[itemIndex]);
+    setLocalStorage("so-cart", cartItems)
+
+    // Remove item from wishlist
+    const wishlistItemRemoved = wishlistItems.filter((item) => item.Id !== itemId);
+    setLocalStorage("wishlist", wishlistItemRemoved);
+
+    // Load cartSuperscript
+    cartSuperscript();
+
+    // Rerender shopping cart
+    this.renderCartContents();
   }
 }
