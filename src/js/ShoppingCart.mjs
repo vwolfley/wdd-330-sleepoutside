@@ -40,16 +40,8 @@ function wishlistTemplate(item) {
                 <h2 class="card__name">${item.Name}</h2>
             </a>
             <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-            <div class="qtd-container">
-                <div class="qtd-button" id="qtdUp" data-id="${item.Id}">+</div>
-                <p class="cart-card__quantity">qty: ${item.Qtd}</p>
-                <div class="qtd-button" id="qtdDown" data-id="${item.Id}">-</div>
-            </div>
             <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
-            <div class="cart-item-buttons">
-              <button class="cart-card__remove" data-id="${item.Id}">X</button>
-              <button class="to-cart-button" data-id="${item.Id}">Move to Cart</button>
-            </div>
+            <button class="to-cart-button" data-id="${item.Id}">Move to Cart</button>
         </li>
     `;
 }

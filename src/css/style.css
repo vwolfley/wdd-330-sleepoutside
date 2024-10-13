@@ -296,15 +296,31 @@ button:hover {
   margin: .5rem 0;
 }
 
+.wishlist {
+  margin: .5rem;
+}
+
+.wishlist-items {
+  padding: 0;
+}
+
+.wishlist-items a {
+  text-decoration: none;
+  color: black;
+}
+
 .to-wishlist-button {
   font-size: 1rem;
   margin: .5rem 0;
-  width: 100px;
+  padding: .2rem;
 }
 
 .to-cart-button {
+  grid-row: 1;
+  grid-column: 4/5;
   font-size: 1rem;
   margin: .5rem 0;
+  padding: .5rem;
 }
 
 #breadcrumbs {
