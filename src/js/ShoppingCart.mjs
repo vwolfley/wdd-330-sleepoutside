@@ -19,7 +19,37 @@ function cartItemTemplate(item) {
                 <div class="qtd-button" id="qtdDown" data-id="${item.Id}">-</div>
             </div>
             <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
-            <button class="cart-card__remove" data-id="${item.Id}">X</button>
+            <div class="cart-item-buttons">
+              <button class="cart-card__remove" data-id="${item.Id}">X</button>
+              <button class="to-wishlist-button" data-id="${item.Id}">Move to Wishlist</button>
+            </div>
+        </li>
+    `;
+}
+
+function wishlistTemplate(item) {
+  return `
+        <li class="cart-card divider">
+            <a href="#" class="cart-card__image">
+                <img
+                src="${item.Images.PrimarySmall}"
+                alt="${item.Name}"
+                />
+            </a>
+            <a href="#">
+                <h2 class="card__name">${item.Name}</h2>
+            </a>
+            <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+            <div class="qtd-container">
+                <div class="qtd-button" id="qtdUp" data-id="${item.Id}">+</div>
+                <p class="cart-card__quantity">qty: ${item.Qtd}</p>
+                <div class="qtd-button" id="qtdDown" data-id="${item.Id}">-</div>
+            </div>
+            <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
+            <div class="cart-item-buttons">
+              <button class="cart-card__remove" data-id="${item.Id}">X</button>
+              <button class="to-cart-button" data-id="${item.Id}">Move to Cart</button>
+            </div>
         </li>
     `;
 }
@@ -31,17 +61,28 @@ export default class ShoppingCart {
   renderCartContents() {
     // Get cart contents from localStorage if any
     const cartItems = getLocalStorage("so-cart") || [];
+    const wishlistItems = getLocalStorage("wishlist") || [];
 
     // If there are no items, we can stop here or show a message
     if (cartItems.length === 0) {
       document.querySelector(".product-list").innerHTML =
         "<p>Your cart is empty.</p>";
       this.cartSubtotal(cartItems);
+      // Check for wishlist items
+      if (wishlistItems.length === 0) document.querySelector(".wishlist-items").innerHTML = "<p>Your wishlist is empty</p>"
       return;
     }
     // If there are items, we can render them
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    
+    // Check for wishlist items and render them if any
+    if (wishlistItems.length === 0) {
+      document.querySelector(".wishlist-items").innerHTML = "<p>Your wishlist is empty</p>"
+    } else {
+      const htmlWishlistItems = wishlistItems.map((item) => wishlistTemplate(item));
+      document.querySelector(".wishlist-items").innerHTML = htmlWishlistItems.join("");
+    }
 
     // Set the total price of the cart
     this.cartSubtotal(cartItems);
