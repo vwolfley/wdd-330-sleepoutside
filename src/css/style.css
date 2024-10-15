@@ -76,6 +76,42 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+
+/* Signup button */
+.newsletter-signup {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.newsletter-signup h2 {
+  margin-top: 0;
+}
+
+.newsletter-signup form {
+  margin-top: 10px;
+}
+
+.newsletter-signup input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.newsletter-signup button[type="submit"] {
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter-signup button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
